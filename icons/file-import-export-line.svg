@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+	<g fill="none" fill-rule="evenodd">
+		<!-- Document (contour ouvert en bas à gauche pour les flèches) -->
+		<path fill="currentColor" d="M13.586 2a2 2 0 0 1 1.284.467l.13.119L19.414 7a2 2 0 0 1 .578 1.238l.008.176V20a2 2 0 0 1-1.85 1.995L18 22h-6v-2h6V10h-4.5a1.5 1.5 0 0 1-1.493-1.356L12 8.5V4H6v8H4V4a2 2 0 0 1 1.85-1.995L6 2zM14 4.414V8h3.586z" />
+		<g stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<!-- Entrée : flèche vers le document -->
+			<path d="M2.5 14.25h7m-2.25-2.25l2.25 2.25l-2.25 2.25" />
+			<!-- Sortie : flèche hors du document -->
+			<path d="M10 19.75H3m2.25-2.25L3 19.75L5.25 22" />
+		</g>
+	</g>
+</svg>

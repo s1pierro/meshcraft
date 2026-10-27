@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#2a1fd1" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="MeshCraft" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>MeshCraft</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg" />
+  <link rel="icon" type="image/png" href="icons/icon-192x192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/pwa.css" />
+
+  <script>
+    // Sortie de secours : ouvrir l'adresse avec ?reset supprime service worker et caches, puis recharge.
+    if (/[?&]reset\b/.test(location.search)) {
+      Promise.all([
+        navigator.serviceWorker ? navigator.serviceWorker.getRegistrations().then(r => Promise.all(r.map(x => x.unregister()))) : 0,
+        window.caches ? caches.keys().then(k => Promise.all(k.map(x => caches.delete(x)))) : 0
+      ]).catch(() => {}).then(() => location.replace(location.pathname));
+    }
+    // Console de débogage sur mobile : ajouter ?eruda à l'adresse
+    if (/[?&]eruda\b/.test(location.search)) {
+      const e = document.createElement('script');
+      e.src = 'https://cdn.jsdelivr.net/npm/eruda@3.4.1/eruda.min.js';
+      e.onload = () => { try { eruda.init(); } catch (x) {} };
+      document.head.appendChild(e);
+    }
+    // Hauteur réelle de l'écran : en PWA plein écran, après un rechargement, Android peut donner une
+    // hauteur de viewport périmée (barres système) ; on la remesure à plusieurs reprises.
+    (function () {
+      const root = document.documentElement;
+      const fit = () => {
+        const vv = window.visualViewport;
+        const h = Math.round(Math.max(window.innerHeight || 0, vv ? vv.height + (vv.offsetTop || 0) : 0));
+        if (h > 100) root.style.setProperty('--app-h', h + 'px');
+      };
+      const burst = () => { fit(); [60, 200, 500, 1000, 2000].forEach(t => setTimeout(fit, t)); };
+      fit();
+      window.addEventListener('resize', fit);
+      window.addEventListener('orientationchange', burst);
+      window.addEventListener('pageshow', burst);
+      window.addEventListener('load', burst);
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) burst(); });
+      document.addEventListener('fullscreenchange', burst);
+      if (window.visualViewport) window.visualViewport.addEventListener('resize', fit);
+    })();
+    // Si l'écran d'accueil reste vide (pwa.js absent ou en erreur), on le retire.
+    window.addEventListener('load', () => setTimeout(() => {
+      const o = document.getElementById('overlay');
+      if (o && !o.firstChild) o.classList.add('fade-out');
+    }, 2500));
+  </script>
+</head>
+<body>
+  <div id="app-body">
+    <main id="app-content"></main>
+    <nav id="app-nav" class="navbar" aria-label="Navigation principale"></nav>
+  </div>
+
+  <!-- Écran d'accueil PWA : état, Démarrer, plein écran, installation, mise à jour (rempli par pwa.js) -->
+  <div id="overlay"></div>
+
+  <script src="app.config.js"></script>
+  <script src="storage-ns.js"></script>
+  <script src="pwa.js"></script>
+  <script src="contexts.js"></script>
+  <script src="panneau.js"></script>
+  <script src="pave.js"></script>
+  <!-- Moteur 3D (l'ordre compte : chaque module utilise les précédents) -->
+  <script src="lib/three.min.js"></script>
+  <script src="moteur/modeles.js"></script>
+  <script src="moteur/maillage.js"></script>
+  <script src="moteur/visserie.js"></script>
+  <script src="moteur/selection.js"></script>
+  <script src="moteur/booleens.js"></script>
+  <script src="moteur/evenements.js"></script>
+  <script src="moteur/tactile.js"></script>
+  <script src="moteur/animation.js"></script>
+  <script src="moteur/sons.js"></script>
+  <script src="moteur/moteur.js"></script>
+  <script src="ctx-editeur.js"></script>
+  <script src="ctx-reglages.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { window.app = new App(); });
+  </script>
+</body>
+</html>

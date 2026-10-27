@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+	<!-- Rendu en jeu : cube éclairé en trois paliers (aplats de tons différents), cerné d'un contour -->
+	<g stroke="currentColor" stroke-linejoin="round" stroke-width="1.4">
+		<path fill="currentColor" d="M12 3l8 4.5-8 4.5-8-4.5z" />
+		<path fill="currentColor" fill-opacity=".55" d="M20 7.5v9L12 21v-9z" />
+		<path fill="currentColor" fill-opacity=".2" d="M4 7.5v9l8 4.5v-9z" />
+	</g>
+</svg>

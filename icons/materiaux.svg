@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+	<!-- Matériaux : sphère éclairée en paliers (trois tons nets, de la lumière à l'ombre) -->
+	<defs><clipPath id="m"><circle cx="12" cy="12" r="8.3" /></clipPath></defs>
+	<g clip-path="url(#m)" fill="currentColor">
+		<rect x="0" y="0" width="24" height="24" fill-opacity=".2" />
+		<circle cx="9" cy="9" r="11" fill-opacity=".3" />
+		<circle cx="8" cy="8" r="7.2" fill-opacity=".5" />
+		<circle cx="7.5" cy="7.5" r="3.6" />
+	</g>
+	<circle cx="12" cy="12" r="8.3" fill="none" stroke="currentColor" stroke-width="1.4" />
+</svg>

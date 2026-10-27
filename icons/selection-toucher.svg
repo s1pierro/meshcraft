@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+	<!-- Sélection au toucher : un élément touché, entouré -->
+	<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4">
+		<circle cx="10" cy="10" r="6.5" stroke-dasharray="1.6 2" />
+		<circle cx="10" cy="10" r="2" fill="currentColor" />
+		<path d="M14.5 14.5l5.5 5.5" />
+	</g>
+</svg>

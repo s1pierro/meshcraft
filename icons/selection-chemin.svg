@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+	<!-- Sélection par chemin : deux points reliés par le plus court chemin, sur un réseau d'arêtes -->
+	<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4">
+		<path stroke-dasharray="1.6 2" d="M4 12h16M12 4v16" />
+		<path stroke-width="2.2" d="M5 19l5-5 4 1 5-10" />
+		<circle cx="5" cy="19" r="1.8" fill="currentColor" />
+		<circle cx="19" cy="5" r="1.8" fill="currentColor" />
+	</g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+	<!-- Sélection par boîte : rectangle tracé en pointillés depuis un coin -->
+	<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4">
+		<rect x="3.5" y="3.5" width="14" height="12" rx="1" stroke-dasharray="1.6 2" />
+		<circle cx="3.5" cy="3.5" r="1.4" fill="currentColor" />
+		<path d="M14 12.5l6.5 2.5-2.8 1.2-1.2 2.8z" fill="currentColor" />
+	</g>
+</svg>
